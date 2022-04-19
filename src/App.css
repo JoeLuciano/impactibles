@@ -1,6 +1,7 @@
 :root {
     --dark-background: rgb(16, 32, 45);
     --light-background: rgb(16, 97, 162);
+    --white: rgb(186, 219, 247);
     --transparent: rgb(0,0,0,0%);
   }
 

@@ -1,3 +1,7 @@
-.symbolContainer {
-    position: absolute;
+.svgContainer {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
 }
