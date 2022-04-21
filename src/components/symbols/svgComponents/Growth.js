@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+export const index = '01';
+
 export const name = 'Growth';
 
 export const Symbol = ({ variant }) => {

@@ -1,4 +1,7 @@
 .svgContainer {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
     display:flex;
     align-items: center;
     justify-content: center;

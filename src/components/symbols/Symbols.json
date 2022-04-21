@@ -1,9 +1,10 @@
 {
-    "Limitless": {
+    "num_symbols": 2,
+    "00": {
         "name": "Limitless",
         "description": "Human potential is nearly limitless."
     },
-    "Growth": {
+    "01": {
         "name": "Growth",
         "description": "Personal growth is the highest priority of Impactivists."
     }

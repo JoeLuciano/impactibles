@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { motion, useAnimation } from 'framer-motion';
-import styles from './SymbolSvg.module.css';
+import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import {
   svg_pixel_size,
   hover_duration,
   selection_duration,
 } from 'components/svgPage/Config';
-import { SymbolContext } from '../SvgPage';
+import { SymbolContext } from 'App';
 
 const svgContainer = {
   static: { scale: 1 },
@@ -24,7 +24,8 @@ const svgVariant = {
   visible: {},
 };
 
-export const SymbolSvg = ({ children }) => {
+export const HeroSymbolSvg = ({ children }) => {
+  const symbolIndex = children.props.index;
   const [svgState, setSvgState] = useState('static');
   const controls = useAnimation();
 
@@ -32,7 +33,8 @@ export const SymbolSvg = ({ children }) => {
     controls.start('static');
   }, [controls]);
 
-  const { selectedSymbol, setSelectedSymbol } = useContext(SymbolContext);
+  const { selectedSymbolIndex, setSelectedSymbolIndex } =
+    useContext(SymbolContext);
 
   return (
     <motion.div
@@ -53,24 +55,22 @@ export const SymbolSvg = ({ children }) => {
         }
       }}
       onTap={() => {
-        if (selectedSymbol === children.props.name && svgState === 'selected') {
+        if (selectedSymbolIndex === symbolIndex && svgState === 'selected') {
           setSvgState('focus');
           controls.start('focus');
-          setSelectedSymbol(undefined);
-        } else if (!selectedSymbol) {
+          setSelectedSymbolIndex(undefined);
+        } else if (!selectedSymbolIndex) {
           setSvgState('selected');
           controls.start('selected');
-          setSelectedSymbol(children.props.name);
+          setSelectedSymbolIndex(symbolIndex);
         }
       }}>
       <motion.svg
-        width={`${svg_pixel_size}`}
-        height={`${svg_pixel_size}`}
         viewBox={`0 0 ${svg_pixel_size} ${svg_pixel_size}`}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
-        style={{ height: 'inherit', width: 'inherit' }}
         variants={svgVariant}
+        style={{ height: 'inherit', width: 'inherit' }}
         initial='hidden'
         animate='visible'>
         <HoverSquare controls={controls} />

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 
+export const index = '00';
+
 export const name = 'Limitless';
 
 export const Symbol = ({ variant }) => {
