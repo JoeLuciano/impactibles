@@ -34,10 +34,11 @@ const hoverSelection = {
   },
 };
 
-export const HoverCircle = ({ controls }) => {
+export const HoverSquare = ({ controls }) => {
   return (
-    <motion.circle
-      r={svg_pixel_size / 2 - stroke_width / 2}
+    <motion.rect
+      height='100%'
+      width='100%'
       cx={svg_pixel_size / 2}
       cy={svg_pixel_size / 2}
       variants={hoverSelection}

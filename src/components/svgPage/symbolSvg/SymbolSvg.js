@@ -1,17 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSvg.module.css';
-import { HoverCircle } from 'components/svgPage/hoverCircle/HoverCircle';
+import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import {
   svg_pixel_size,
   hover_duration,
   selection_duration,
 } from 'components/svgPage/Config';
+import { SymbolContext } from '../SvgPage';
 
 const svgContainer = {
   static: { scale: 1 },
-  focus: { scale: 1.2, transition: { duration: hover_duration } },
-  selected: { scale: 1.5, transition: { duration: selection_duration } },
+  focus: { zIndex: 1, scale: 1.2, transition: { duration: hover_duration } },
+  selected: {
+    zIndex: 2,
+    scale: 1.5,
+    transition: { duration: selection_duration },
+  },
 };
 
 const svgVariant = {
@@ -22,9 +27,13 @@ const svgVariant = {
 export const SymbolSvg = ({ children }) => {
   const [svgState, setSvgState] = useState('static');
   const controls = useAnimation();
+
   useEffect(() => {
     controls.start('static');
   }, [controls]);
+
+  const { selectedSymbol, setSelectedSymbol } = useContext(SymbolContext);
+
   return (
     <motion.div
       className={styles.svgContainer}
@@ -44,12 +53,14 @@ export const SymbolSvg = ({ children }) => {
         }
       }}
       onTap={() => {
-        if (svgState === 'selected') {
+        if (selectedSymbol === children.props.name && svgState === 'selected') {
           setSvgState('focus');
           controls.start('focus');
-        } else {
+          setSelectedSymbol(undefined);
+        } else if (!selectedSymbol) {
           setSvgState('selected');
           controls.start('selected');
+          setSelectedSymbol(children.props.name);
         }
       }}>
       <motion.svg
@@ -62,7 +73,7 @@ export const SymbolSvg = ({ children }) => {
         variants={svgVariant}
         initial='hidden'
         animate='visible'>
-        <HoverCircle controls={controls} />
+        <HoverSquare controls={controls} />
         {children}
       </motion.svg>
     </motion.div>
