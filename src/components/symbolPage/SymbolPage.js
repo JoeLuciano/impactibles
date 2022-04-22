@@ -10,8 +10,7 @@ export const SymbolPage = ({ symbolSvgs }) => {
       <SymbolSummary
         symbolIndex={symbol_id}
         selectedSymbolSvg={symbolSvgs[parseInt(symbol_id)]}
-        width='30rem'
-        height='20rem'
+        isPage
       />
     </motion.div>
   );

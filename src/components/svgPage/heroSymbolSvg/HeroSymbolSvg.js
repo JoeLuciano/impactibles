@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
@@ -25,16 +26,19 @@ const svgVariant = {
 };
 
 export const HeroSymbolSvg = ({ children }) => {
+  const { symbol_id } = useParams();
   const symbolIndex = children.props.index;
-  const [svgState, setSvgState] = useState('static');
+  const [svgState, setSvgState] = useState(
+    symbol_id === symbolIndex ? 'selected' : 'static'
+  );
   const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start('static');
-  }, [controls]);
 
   const { selectedSymbolIndex, setSelectedSymbolIndex } =
     useContext(SymbolContext);
+
+  useEffect(() => {
+    controls.start(svgState);
+  }, [controls, svgState]);
 
   return (
     <motion.div
@@ -45,23 +49,19 @@ export const HeroSymbolSvg = ({ children }) => {
       onHoverStart={() => {
         if (svgState === 'static') {
           setSvgState('focus');
-          controls.start('focus');
         }
       }}
       onHoverEnd={() => {
         if (svgState === 'focus') {
           setSvgState('static');
-          controls.start('static');
         }
       }}
       onTap={() => {
         if (selectedSymbolIndex === symbolIndex && svgState === 'selected') {
           setSvgState('focus');
-          controls.start('focus');
-          setSelectedSymbolIndex(undefined);
+          setSelectedSymbolIndex('');
         } else if (!selectedSymbolIndex) {
           setSvgState('selected');
-          controls.start('selected');
           setSelectedSymbolIndex(symbolIndex);
         }
       }}>

@@ -15,13 +15,7 @@ const svgVariant = {
   visible: {},
 };
 
-export const SymbolSummary = ({
-  symbolIndex,
-  selectedSymbolSvg,
-  height,
-  width,
-  isPage,
-}) => {
+export const SymbolSummary = ({ symbolIndex, selectedSymbolSvg, isPage }) => {
   const controls = useAnimation();
   useEffect(() => {
     if (symbolIndex || isPage) {
@@ -36,11 +30,10 @@ export const SymbolSummary = ({
   return (
     <motion.div
       layoutId='SymbolPage'
-      className={styles.container}
+      className={isPage ? styles.pageContainer : styles.summaryContainer}
       variants={containerVariant}
       animate={controls}
-      style={{ height: height, width: width }}
-      onClick={() => navigate(symbolIndex)}>
+      {...(!isPage && { onClick: () => navigate(`/symbol/${symbolIndex}`) })}>
       {symbolIndex && (
         <motion.svg
           viewBox={`0 0 ${svg_pixel_size} ${svg_pixel_size}`}
