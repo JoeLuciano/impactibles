@@ -8,7 +8,6 @@ export const SymbolPage = ({ symbolSvgs }) => {
   return (
     <motion.div className={styles.symbolPageContainer}>
       <SymbolSummary
-        symbolIndex={symbol_id}
         selectedSymbolSvg={symbolSvgs[parseInt(symbol_id)]}
         isPage
       />

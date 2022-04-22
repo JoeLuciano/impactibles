@@ -28,7 +28,6 @@ const SymbolSvg = ({ children }) => {
 
 function App() {
   const [symbolSvgs, setSymbolSvgs] = useState([]);
-  const [selectedSymbolIndex, setSelectedSymbolIndex] = useState('');
 
   useEffect(() => {
     for (var symbol_index in Symbols) {
@@ -49,27 +48,21 @@ function App() {
   }, []);
 
   return (
-    <SymbolContext.Provider
-      value={{
-        selectedSymbolIndex: selectedSymbolIndex,
-        setSelectedSymbolIndex: setSelectedSymbolIndex,
-      }}>
-      <Router>
-        <div className='app'>
-          <Routes>
-            <Route path={'/'} element={<SvgPage symbolSvgs={symbolSvgs} />} />
-            <Route
-              path={'/:symbol_id'}
-              element={<SvgPage symbolSvgs={symbolSvgs} />}
-            />
-            <Route
-              path={'/symbol/:symbol_id'}
-              element={<SymbolPage symbolSvgs={symbolSvgs} isPage />}
-            />
-          </Routes>
-        </div>
-      </Router>
-    </SymbolContext.Provider>
+    <Router>
+      <div className='app'>
+        <Routes>
+          <Route path={'/'} element={<SvgPage symbolSvgs={symbolSvgs} />} />
+          <Route
+            path={'/:symbol_id'}
+            element={<SvgPage symbolSvgs={symbolSvgs} />}
+          />
+          <Route
+            path={'/symbol/:symbol_id'}
+            element={<SymbolPage symbolSvgs={symbolSvgs} isPage />}
+          />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

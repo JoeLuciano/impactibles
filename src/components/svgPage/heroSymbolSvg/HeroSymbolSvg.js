@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
@@ -8,7 +8,6 @@ import {
   hover_duration,
   selection_duration,
 } from 'components/svgPage/Config';
-import { SymbolContext } from 'App';
 
 const svgContainer = {
   static: { scale: 1 },
@@ -28,17 +27,22 @@ const svgVariant = {
 export const HeroSymbolSvg = ({ children }) => {
   const { symbol_id } = useParams();
   const symbolIndex = children.props.index;
-  const [svgState, setSvgState] = useState(
-    symbol_id === symbolIndex ? 'selected' : 'static'
-  );
+  const [svgState, setSvgState] = useState('static');
   const controls = useAnimation();
-
-  const { selectedSymbolIndex, setSelectedSymbolIndex } =
-    useContext(SymbolContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    controls.start(svgState);
-  }, [controls, svgState]);
+    console.log(symbol_id, symbolIndex, svgState);
+    if (symbol_id && symbol_id === symbolIndex) {
+      setSvgState('selected');
+      controls.start('selected');
+    } else if (svgState === 'focus') {
+      controls.start('focus');
+    } else {
+      setSvgState('static');
+      controls.start('static');
+    }
+  }, [symbol_id, symbolIndex, controls, svgState]);
 
   return (
     <motion.div
@@ -57,12 +61,12 @@ export const HeroSymbolSvg = ({ children }) => {
         }
       }}
       onTap={() => {
-        if (selectedSymbolIndex === symbolIndex && svgState === 'selected') {
+        if (symbol_id === symbolIndex && svgState === 'selected') {
           setSvgState('focus');
-          setSelectedSymbolIndex('');
-        } else if (!selectedSymbolIndex) {
+          navigate('/');
+        } else if (!symbol_id) {
           setSvgState('selected');
-          setSelectedSymbolIndex(symbolIndex);
+          navigate(`/${symbolIndex}`);
         }
       }}>
       <motion.svg

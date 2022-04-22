@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate, useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
 import { svg_pixel_size } from 'components/svgPage/Config';
@@ -15,15 +14,16 @@ const svgVariant = {
   visible: {},
 };
 
-export const SymbolSummary = ({ symbolIndex, selectedSymbolSvg, isPage }) => {
+export const SymbolSummary = ({ selectedSymbolSvg, isPage }) => {
+  const { symbol_id } = useParams();
   const controls = useAnimation();
   useEffect(() => {
-    if (symbolIndex || isPage) {
+    if (symbol_id || isPage) {
       controls.start('visible');
     } else {
       controls.start('hidden');
     }
-  }, [symbolIndex, controls, isPage]);
+  }, [symbol_id, controls, isPage]);
 
   const navigate = useNavigate();
 
@@ -33,8 +33,8 @@ export const SymbolSummary = ({ symbolIndex, selectedSymbolSvg, isPage }) => {
       className={isPage ? styles.pageContainer : styles.summaryContainer}
       variants={containerVariant}
       animate={controls}
-      {...(!isPage && { onClick: () => navigate(`/symbol/${symbolIndex}`) })}>
-      {symbolIndex && (
+      {...(!isPage && { onClick: () => navigate(`/symbol/${symbol_id}`) })}>
+      {symbol_id && (
         <motion.svg
           viewBox={`0 0 ${svg_pixel_size} ${svg_pixel_size}`}
           fill='none'
@@ -43,7 +43,7 @@ export const SymbolSummary = ({ symbolIndex, selectedSymbolSvg, isPage }) => {
           style={{ height: 'inherit', width: 'inherit' }}
           initial='hidden'
           animate='visible'>
-          {selectedSymbolSvg.props.children}
+          {selectedSymbolSvg && selectedSymbolSvg.props.children}
         </motion.svg>
       )}
     </motion.div>
