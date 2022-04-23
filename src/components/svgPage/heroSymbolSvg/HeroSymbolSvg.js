@@ -3,11 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
-import {
-  svg_pixel_size,
-  hover_duration,
-  selection_duration,
-} from 'components/svgPage/Config';
+import { hover_duration, selection_duration } from 'components/svgPage/Config';
+import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 
 const svgContainer = {
   static: { scale: 1 },
@@ -19,11 +16,6 @@ const svgContainer = {
   },
 };
 
-const svgVariant = {
-  hidden: {},
-  visible: {},
-};
-
 export const HeroSymbolSvg = ({ children }) => {
   const { symbol_id } = useParams();
   const symbolIndex = children.props.index;
@@ -32,7 +24,6 @@ export const HeroSymbolSvg = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(symbol_id, symbolIndex, svgState);
     if (symbol_id && symbol_id === symbolIndex) {
       setSvgState('selected');
       controls.start('selected');
@@ -69,17 +60,10 @@ export const HeroSymbolSvg = ({ children }) => {
           navigate(`/${symbolIndex}`);
         }
       }}>
-      <motion.svg
-        viewBox={`0 0 ${svg_pixel_size} ${svg_pixel_size}`}
-        fill='none'
-        xmlns='http://www.w3.org/2000/svg'
-        variants={svgVariant}
-        style={{ height: 'inherit', width: 'inherit' }}
-        initial='hidden'
-        animate='visible'>
+      <SymbolSvg controls='visible'>
         <HoverSquare controls={controls} />
         {children}
-      </motion.svg>
+      </SymbolSvg>
     </motion.div>
   );
 };
