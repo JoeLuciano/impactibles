@@ -1,0 +1,15 @@
+<svg width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="149" height="149" stroke="black"/>
+<path d="M127 23H23V128H127V23Z" stroke="#02DFEE" stroke-width="4" stroke-linecap="square"/>
+<line x1="114" y1="106" x2="85" y2="106" stroke="#02DFEE" stroke-width="4"/>
+<line x1="75" y1="23" x2="75" y2="128" stroke="#02DFEE" stroke-width="4"/>
+<line x1="114" y1="45" x2="85" y2="45" stroke="#02DFEE" stroke-width="4"/>
+<line x1="114" y1="60" x2="85" y2="60" stroke="#02DFEE" stroke-width="4"/>
+<line x1="114" y1="76" x2="85" y2="76" stroke="#02DFEE" stroke-width="4"/>
+<line x1="114" y1="90" x2="85" y2="90" stroke="#02DFEE" stroke-width="4"/>
+<line x1="62" y1="106" x2="33" y2="106" stroke="#02DFEE" stroke-width="4"/>
+<line x1="62" y1="45" x2="33" y2="45" stroke="#02DFEE" stroke-width="4"/>
+<line x1="62" y1="60" x2="33" y2="60" stroke="#02DFEE" stroke-width="4"/>
+<line x1="62" y1="76" x2="33" y2="76" stroke="#02DFEE" stroke-width="4"/>
+<line x1="62" y1="90" x2="33" y2="90" stroke="#02DFEE" stroke-width="4"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg width="116" height="116" viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8 58C8 85.6142 30.3858 108 58 108C85.6142 108 108 85.6142 108 58C108 30.3858 85.6142 8 58 8C30.3858 8 8 30.3858 8 58Z" stroke="#02DFEE" stroke-width="4" stroke-linecap="square"/>
+<path d="M41 58C41 67.3888 48.6112 75 58 75C67.3888 75 75 67.3888 75 58C75 48.6112 67.3888 41 58 41C48.6112 41 41 48.6112 41 58Z" stroke="#02DFEE" stroke-width="4" stroke-linecap="square"/>
+<line x1="58" y1="101" x2="58" y2="116" stroke="#02DFEE" stroke-width="4"/>
+<line x1="58" y1="76" x2="58" y2="83" stroke="#02DFEE" stroke-width="4"/>
+<line x1="58" y1="33" x2="58" y2="41" stroke="#02DFEE" stroke-width="4"/>
+<line x1="58" y1="-8.74228e-08" x2="58" y2="17" stroke="#02DFEE" stroke-width="4"/>
+<line x1="101" y1="58" x2="116" y2="58" stroke="#02DFEE" stroke-width="4"/>
+<line y1="58" x2="15" y2="58" stroke="#02DFEE" stroke-width="4"/>
+</svg>

@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 
 export const index = '01';
 
-export const name = 'Growth';
+export const name = 'Share Lessons';
 
 export const description =
-  'Personal growth is the highest priority of Impactivists.';
+  'Share the lessons learned from your mistakes with your fellow impactivists.';
 
 export const Symbol = ({ variant }) => {
   return (
