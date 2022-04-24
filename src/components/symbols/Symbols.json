@@ -4,7 +4,11 @@
         "description": "Human potential is nearly limitless."
     },
     "01": {
-        "name": "Growth",
-        "description": "Personal growth is the highest priority of Impactivists."
+        "name": "Share_Lessons",
+        "description": "Share the lessons learned from your mistakes with your fellow Impactivists."
+    },
+    "02": {
+        "name": "Goal-Oriented_Work",
+        "description": "Only work in an environment that is moving you towards your goals."
     }
 }

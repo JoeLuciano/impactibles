@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
 import { SymbolContext } from 'App';
+import Symbol_Index from 'components/symbols/Symbols.json';
 
 const containerVariant = {
   hidden: { opacity: 0, zIndex: -1 },
@@ -62,7 +63,8 @@ export const SymbolSummary = ({ isSymbolPage }) => {
             : styles.summarySymbolDescription
         }>
         {selectedSymbolSvg &&
-          selectedSymbolSvg.props.children.props.description}
+          Symbol_Index[selectedSymbolSvg.props.children.props.index]
+            .description}
       </motion.h3>
     </motion.div>
   );

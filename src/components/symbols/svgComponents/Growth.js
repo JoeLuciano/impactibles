@@ -1,31 +1,12 @@
-import { motion } from 'framer-motion';
-
-export const index = '01';
-
-export const name = 'Share Lessons';
-
-export const description =
-  'Share the lessons learned from your mistakes with your fellow impactivists.';
-
+import { motion } from 'framer-motion'
+export const index = '10'
+export const name = 'Growth'
 export const Symbol = ({ variant }) => {
   return (
     <>
-      <motion.rect
-        x='25'
-        y='22'
-        width='102'
-        height='98'
-        strokeWidth='2'
-        strokeLinecap='square'
-        stroke='#02DFEE'
-        variants={variant}
-      />
-      <motion.path
-        d='M9 120L54.5 47.5L68.5 72L90 47L96.5 93L141.5 23.5'
-        strokeWidth='2'
-        stroke='#02DFEE'
-        variants={variant}
-      />
+        <motion.line x1="103" y1="26" x2="103" y2="125" stroke="#02DFEE" strokeWidth="2" variants={variant}/>
+        <motion.line x1="76" y1="61" x2="76" y2="125" stroke="#02DFEE" strokeWidth="2" variants={variant}/>
+        <motion.line x1="50" y1="84" x2="50" y2="125" stroke="#02DFEE" strokeWidth="2" variants={variant}/>
     </>
   );
 };
