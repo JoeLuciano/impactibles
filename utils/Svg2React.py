@@ -10,6 +10,21 @@ class Svg2React:
     relative_svg_images_path = f'{util_filepath}/{path_to_svg_images}'
     relative_svg_components_path = f'{util_filepath}/{path_to_svg_components}'
 
+    def write_symbol_index_json(self):
+        with os.scandir(self.relative_svg_images_path) as svg_images:
+            with open(f'{Svg2React.relative_svg_components_path}/../Symbol_Index.json', 'w') as symbol_json:
+                symbol_json.write('{\n')
+                for svg_file in svg_images:
+                    if not 'Container' in svg_file.name:
+                        continue
+                    index = self.get_index_from_filename(svg_file.name)
+                    symbol_json.write(f'"{index}": {{\n')
+                    react_svg_name = self.get_name_from_filename(svg_file.name)
+                    valid_react_svg_name = react_svg_name.replace(' ', '_')
+                    symbol_json.write(f'"name": "{valid_react_svg_name}",\n')
+                    symbol_json.write('"description": ""\n},\n')
+                symbol_json.write('}')
+
     def create_all_react_components(self):
         with os.scandir(self.relative_svg_images_path) as svg_images:
             for svg_file in svg_images:
@@ -77,6 +92,8 @@ def get_parsed_args():
         description='Translate all Svg Images into React components.')
     parser.add_argument('--path_to_svg_images', dest='path_to_svg_images', action='store', type=str,
                         default=Svg2React.path_to_svg_images, help='Set a custom path to the Svg Images (default: ./../src/svgImages)')
+    parser.add_argument('--write_json', dest='write_json', action='store_true',
+                        default=False, help='Create a fresh Symbols.json file (default: False)')
 
     return parser.parse_args()
 
@@ -135,4 +152,8 @@ export const Symbol = ({ variant }) => {
 
 if __name__ == '__main__':
     # unittest.main()
-    Svg2React().create_all_react_components()
+    args = get_parsed_args()
+    if (args.write_json):
+        Svg2React().write_symbol_index_json()
+    else:
+        Svg2React().create_all_react_components()
