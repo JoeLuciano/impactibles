@@ -4,6 +4,9 @@ export const index = '01';
 
 export const name = 'Growth';
 
+export const description =
+  'Personal growth is the highest priority of Impactivists.';
+
 export const Symbol = ({ variant }) => {
   return (
     <>

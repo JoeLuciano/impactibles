@@ -53,14 +53,14 @@ export const HeroSymbolSvg = ({ children }) => {
       }}
       onTap={() => {
         if (symbol_id === symbolIndex && svgState === 'selected') {
-          setSvgState('focus');
+          setSvgState('static');
           navigate('/');
         } else if (!symbol_id) {
           setSvgState('selected');
           navigate(`/${symbolIndex}`);
         }
       }}>
-      <SymbolSvg controls='visible'>
+      <SymbolSvg>
         <HoverSquare controls={controls} />
         {children}
       </SymbolSvg>

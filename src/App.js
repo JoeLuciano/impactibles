@@ -4,6 +4,7 @@ import { drawPath } from './components/svgPage/Config';
 import Symbols from 'components/symbols/Symbols.json';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 import { PageRoutes } from 'components/pageRoutes/PageRoutes';
+import { AnimatePresence } from 'framer-motion';
 
 export const SymbolContext = createContext();
 
@@ -15,11 +16,16 @@ function App() {
       const symbolName = Symbols[symbol_index].name;
       if (symbolName) {
         import(`components/symbols/svgComponents/${symbolName}`).then(
-          ({ index, name, Symbol }) => {
+          ({ index, name, description, Symbol }) => {
             setSymbolSvgs((prev) => [
               ...prev,
-              <SymbolSvg key={index} controls='visible'>
-                <Symbol index={index} name={name} variant={drawPath} />
+              <SymbolSvg key={index}>
+                <Symbol
+                  index={index}
+                  name={name}
+                  description={description}
+                  variant={drawPath}
+                />
               </SymbolSvg>,
             ]);
           }

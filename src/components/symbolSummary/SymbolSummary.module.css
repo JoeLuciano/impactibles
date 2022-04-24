@@ -1,11 +1,12 @@
-.summaryContainer {
+.summaryContainer{
     position: absolute;
     left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
     width: 10rem;
-    height: 10rem;
     background-color: #fff;
+    z-index: 5;
+    padding: 1rem;
 }
 
 .pageContainer {
@@ -13,4 +14,35 @@
     width: 100%;
     height: 100%;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: left;
+    padding: 1rem;
+}
+
+.summarySvgContainer {
+    width: 10rem;
+    height: 10rem;
+}
+
+.pageSvgContainer {
+    width: 20rem;
+    height: 20rem;
+}
+
+.summarySymbolName {
+    font-size: 2rem;
+}
+
+.pageSymbolName {
+    font-size: 4rem;
+}
+
+.summarySymbolDescription {
+    font-size: 1rem;
+}
+
+.pageSymbolDescription {
+    font-size: 1rem;
 }

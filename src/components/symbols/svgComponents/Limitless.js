@@ -4,6 +4,8 @@ export const index = '00';
 
 export const name = 'Limitless';
 
+export const description = 'Human potential is nearly limitless.';
+
 export const Symbol = ({ variant }) => {
   return (
     <motion.path
