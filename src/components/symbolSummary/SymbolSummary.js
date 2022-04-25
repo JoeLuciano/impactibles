@@ -1,9 +1,10 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
-import { SymbolContext } from 'App';
 import Symbol_Index from 'components/symbols/Symbols.json';
+import { drawPath } from 'components/svgPage/Config';
+import { SymbolSvg } from './../symbolSvg/SymbolSvg';
 
 const containerVariant = {
   hidden: { opacity: 0, zIndex: -1 },
@@ -27,8 +28,28 @@ export const SymbolSummary = ({ isSymbolPage }) => {
   }, [symbol_id, controls, isSymbolPage]);
 
   const navigate = useNavigate();
-  const { symbolSvgs } = useContext(SymbolContext);
-  const selectedSymbolSvg = symbolSvgs[parseInt(symbol_id)];
+
+  const [summarySymbol, setSummarySymbol] = useState('NO SVG');
+  useEffect(() => {
+    if (symbol_id) {
+      const symbolName = Symbol_Index[symbol_id].name;
+
+      import(`components/symbols/svgComponents/${symbolName}`).then(
+        ({ index, name, description, Symbol }) => {
+          setSummarySymbol(
+            <SymbolSvg>
+              <Symbol
+                index={index}
+                name={name}
+                description={description}
+                variant={drawPath}
+              />
+            </SymbolSvg>
+          );
+        }
+      );
+    }
+  }, [symbol_id]);
 
   return (
     <motion.div
@@ -46,14 +67,14 @@ export const SymbolSummary = ({ isSymbolPage }) => {
         {...(!isSymbolPage && {
           onClick: () => navigate(`/symbol/${symbol_id}`),
         })}>
-        {selectedSymbolSvg}
+        {summarySymbol}
       </motion.div>
       <motion.h1
         layoutId='SymbolPageName'
         className={
           isSymbolPage ? styles.pageSymbolName : styles.summarySymbolName
         }>
-        {selectedSymbolSvg && selectedSymbolSvg.props.children.props.name}
+        {symbol_id && Symbol_Index[symbol_id].name}
       </motion.h1>
       <motion.h3
         layoutId='SymbolPageDescription'
@@ -62,9 +83,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
             ? styles.pageSymbolDescription
             : styles.summarySymbolDescription
         }>
-        {selectedSymbolSvg &&
-          Symbol_Index[selectedSymbolSvg.props.children.props.index]
-            .description}
+        {symbol_id && Symbol_Index[symbol_id].description}
       </motion.h3>
     </motion.div>
   );
