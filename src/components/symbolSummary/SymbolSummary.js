@@ -74,7 +74,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
         className={
           isSymbolPage ? styles.pageSymbolName : styles.summarySymbolName
         }>
-        {symbol_id && Symbol_Index[symbol_id].name}
+        {symbol_id && Symbol_Index[symbol_id].name.split('_').join(' ')}
       </motion.h1>
       <motion.h3
         layoutId='SymbolPageDescription'
