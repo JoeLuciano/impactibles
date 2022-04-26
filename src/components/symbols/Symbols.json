@@ -13,162 +13,162 @@
     },
     "03": {
         "name": "Fast_Pig",
-        "description": ""
-        },
-        "04": {
+        "description": "You can't make a racehorse out of a pig, but you can make a really fast pig."
+    },
+    "04": {
         "name": "3",
-        "description": ""
-        },
-        "10": {
+        "description": "Part one of early love. The process of creating passion."
+    },
+    "10": {
         "name": "Growth",
-        "description": ""
-        },
-        "11": {
+        "description": "Personal growth is the highest priority of Impactivists."
+    },
+    "11": {
         "name": "Failure_is_Temporary",
-        "description": ""
-        },
-        "12": {
+        "description": "Failure is temporary. Move quickly beyond it."
+    },
+    "12": {
         "name": "Be_a_Linchpin",
-        "description": ""
-        },
-        "13": {
+        "description": "Impactivists are Linchpins who work hard, smart, and long hours."
+    },
+    "13": {
         "name": "Watermelon",
-        "description": ""
-        },
-        "14": {
+        "description": "Well... IYKYK."
+    },
+    "14": {
         "name": "7",
-        "description": ""
-        },
-        "20": {
+        "description": "Luck is real, and it favors the prepared."
+    },
+    "20": {
         "name": "Skill_Acquisition",
-        "description": ""
-        },
-        "21": {
+        "description": "You can acquire new skills in any area at any time."
+    },
+    "21": {
         "name": "Learn_from_Everyone",
-        "description": ""
-        },
-        "22": {
+        "description": "Everyone has something to teach you. Learn from whomever you can."
+    },
+    "22": {
         "name": "Center_on_Passion",
-        "description": ""
-        },
-        "23": {
+        "description": "Passion will help you keep fighting to reach your goals when things get difficult. Center your life around your passion."
+    },
+    "23": {
         "name": "Yin_Yang",
-        "description": ""
-        },
-        "24": {
+        "description": "Duality - the harmony of antagonistic forces."
+    },
+    "24": {
         "name": "10",
-        "description": ""
-        },
-        "30": {
+        "description": "Part two of early love. The process of creating passion."
+    },
+    "30": {
         "name": "Focus",
-        "description": ""
-        },
-        "31": {
+        "description": "It requires focus and disciplined practice to acquire new skills."
+    },
+    "31": {
         "name": "No_Excuses",
-        "description": ""
-        },
-        "32": {
+        "description": "Impactivists do not make excuses. Ever."
+    },
+    "32": {
         "name": "Elevate_Others",
-        "description": ""
-        },
-        "34": {
+        "description": "Impactivists motivate and inspire those around them."
+    },
+    "34": {
         "name": "19",
-        "description": ""
-        },
-        "40": {
+        "description": "For those gathered around a shared purpose."
+    },
+    "40": {
         "name": "You_Can_Do_Anything",
-        "description": ""
-        },
-        "41": {
+        "description": "You can do ANYTHING you set your mind to, without limitation."
+    },
+    "41": {
         "name": "Overcome_Obstacles",
-        "description": ""
-        },
-        "42": {
+        "description": "Any obstacle can be overcome."
+    },
+    "42": {
         "name": "Run_Physics_of_Progress",
-        "description": ""
-        },
-        "43": {
+        "description": "Adhere to the Physics of Progress."
+    },
+    "43": {
         "name": "Butterfly",
-        "description": ""
-        },
-        "44": {
+        "description": "Transformation."
+    },
+    "44": {
         "name": "20",
-        "description": ""
-        },
-        "50": {
+        "description": "Commit to what you love."
+    },
+    "50": {
         "name": "Empowerment",
-        "description": ""
-        },
-        "51": {
+        "description": "#5 is a lie. But it's an empowering lie. Impactivists do and believe which empowers us."
+    },
+    "51": {
         "name": "Ego_Confuses",
-        "description": ""
-        },
-        "52": {
+        "description": "Building your self-esteem around being right all the time will lead to poor decision-making."
+    },
+    "52": {
         "name": "Love",
-        "description": ""
-        },
-        "53": {
+        "description": "Love."
+    },
+    "53": {
         "name": "Torii_Gate",
-        "description": ""
-        },
-        "54": {
+        "description": "The transition from the mundane to the sacred."
+    },
+    "54": {
         "name": "27",
-        "description": ""
-        },
-        "60": {
+        "description": "Know your top priority."
+    },
+    "60": {
         "name": "Become",
-        "description": ""
-        },
-        "61": {
+        "description": "It doesn't matter who you are today. It only matters who you want to become and how hard you are willing to work to become that person."
+    },
+    "61": {
         "name": "Pursue_Right_Answers",
-        "description": ""
-        },
-        "62": {
+        "description": "Build your self-esteem around identifying the right answer and pursuing it faster than anyone else."
+    },
+    "62": {
         "name": "Lightning_Bolt",
-        "description": ""
-        },
-        "63": {
+        "description": "Be a force of nature."
+    },
+    "63": {
         "name": "Book",
-        "description": ""
-        },
-        "64": {
+        "description": "ABL - Always be Learning."
+    },
+    "64": {
         "name": "Values_Stack",
-        "description": ""
-        },
-        "70": {
+        "description": "Make progress - work your way up."
+    },
+    "70": {
         "name": "Best_Version",
-        "description": ""
-        },
-        "71": {
+        "description": "See beyond your current self to the opportunity of becoming the best version of yourself."
+    },
+    "71": {
         "name": "Have_Clear_Goals",
-        "description": ""
-        },
-        "72": {
+        "description": "Have VERY clear goals."
+    },
+    "72": {
         "name": "North_Star",
-        "description": ""
-        },
-        "73": {
+        "description": "Your goal is your north star - follow it."
+    },
+    "73": {
         "name": "Mind_the_Gap",
-        "description": ""
-        },
-        "74": {
+        "description": "Mind the gap between stimulus and response."
+    },
+    "74": {
         "name": "Joy",
-        "description": ""
-        },
-        "80": {
+        "description": "Build a joyful life."
+    },
+    "80": {
         "name": "Safe_Mistakes",
-        "description": ""
-        },
-        "81": {
+        "description": "The Impact Theory Community is a safe place to make mistakes."
+    },
+    "81": {
         "name": "Move_Towards_Goals",
-        "description": ""
-        },
-        "83": {
+        "description": "Do that which moves you toward your goals."
+    },
+    "83": {
         "name": "Cherry_Blossom_Tree",
-        "description": ""
-        },
-        "90": {
+        "description": "The beauty and fragility of lie / Life is transient - we're not guaranteed anything."
+    },
+    "90": {
         "name": "Mistakes_Teach",
-        "description": ""
-        }
+        "description": "Mistakes are a great teacher to those who are willing to admit that they've made one."
+    }
 }
