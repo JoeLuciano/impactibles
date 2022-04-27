@@ -163,12 +163,36 @@
         "name": "Move_Towards_Goals",
         "description": "Do that which moves you toward your goals."
     },
+    "82": {
+        "name": "Helm",
+        "description": "Remember you control your life, put your hands back on the wheel / Steamboat Willie."
+    },
     "83": {
         "name": "Cherry_Blossom_Tree",
         "description": "The beauty and fragility of lie / Life is transient - we're not guaranteed anything."
     },
+    "84": {
+        "name": "Capsule",
+        "description": "Seek the truth."
+    },
     "90": {
         "name": "Mistakes_Teach",
         "description": "Mistakes are a great teacher to those who are willing to admit that they've made one."
+    },
+    "91": {
+        "name": "Not_Away_from_Goals",
+        "description": "Do NOT do that which moves you away from your goals."
+    },
+    "92": {
+        "name": "Pattern_Interrupt",
+        "description": "Pattern interrupt - don't allow yourself to think dumb shit."
+    },
+    "93": {
+        "name": "Diamond",
+        "description": "Pressure = Diamonds / Sty hard."
+    },
+    "94": {
+        "name": "Brain",
+        "description": "You're having a biological experience / Growth Mindset."
     }
 }

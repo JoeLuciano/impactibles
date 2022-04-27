@@ -32,6 +32,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
   const [summarySymbol, setSummarySymbol] = useState('NO SVG');
   useEffect(() => {
     if (symbol_id) {
+      // Set this as a global state that you can pull from rather than re-import which is VERY SLOW!!!!
       const symbolName = Symbol_Index[symbol_id].name;
 
       import(`components/symbols/svgComponents/${symbolName}`).then(

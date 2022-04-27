@@ -163,12 +163,36 @@
 "name": "Move_Towards_Goals",
 "description": ""
 },
+"82": {
+"name": "Helm",
+"description": ""
+},
 "83": {
 "name": "Cherry_Blossom_Tree",
 "description": ""
 },
+"84": {
+"name": "Capsule",
+"description": ""
+},
 "90": {
 "name": "Mistakes_Teach",
+"description": ""
+},
+"91": {
+"name": "Not_Away_from_Goals",
+"description": ""
+},
+"92": {
+"name": "Pattern_Interrupt",
+"description": ""
+},
+"93": {
+"name": "Diamond",
+"description": ""
+},
+"94": {
+"name": "Brain",
 "description": ""
 }
 }
