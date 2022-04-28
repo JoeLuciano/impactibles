@@ -1,38 +1,36 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { HeroSymbolSvg } from 'components/svgPage/heroSymbolSvg/HeroSymbolSvg';
 import { SymbolSummary } from 'components/symbolSummary/SymbolSummary';
 import styles from './SvgPage.module.css';
+import { symbolSvgContext } from 'App';
+
+const svgPage = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
 
 export const SvgPage = () => {
-  const [heroSymbolSvgs, setHeroSymbolSvgs] = useState([]);
+  const { symbol_id } = useParams();
+  const { heroSymbolSvgs } = useContext(symbolSvgContext);
 
+  // TODO: Figure out how to prevent hidden symbols when refreshing page after selecting a symbol
+  const [showSymbol, setShowSymbol] = useState(Boolean(symbol_id));
   useEffect(() => {
-    const symbol_order = [
-      ...['00', '01', '02', '03', '04'],
-      ...['10', '11', '12', '13', '14'],
-      ...['20', '21', '22', '23', '24'],
-      ...['30', '31', '32', '34'],
-      ...['40', '41', '42', '43', '44'],
-      ...['50', '51', '52', '53', '54'],
-      ...['60', '61', '62', '63', '64'],
-      ...['70', '71', '72', '73', '74'],
-      ...['80', '81', '82', '83', '84'],
-      ...['90', '91', '92', '93', '94'],
-    ];
-
-    setHeroSymbolSvgs((prev) => {
-      var symbols = [];
-      for (var symbol_id of symbol_order) {
-        symbols.push(<HeroSymbolSvg key={symbol_id} symbolIndex={symbol_id} />);
-      }
-      return symbols;
-    });
-  }, []);
+    async function delayShow() {
+      await new Promise((res) => setTimeout(res, 200));
+      setShowSymbol(true);
+    }
+    delayShow();
+  });
 
   return (
-    <motion.div className={styles.svgPageContainer}>
-      {heroSymbolSvgs}
+    <motion.div
+      className={styles.svgPageContainer}
+      variants={svgPage}
+      initial='hidden'
+      animate='visible'>
+      {showSymbol && heroSymbolSvgs.length === 49 && heroSymbolSvgs}
       <SymbolSummary />
     </motion.div>
   );

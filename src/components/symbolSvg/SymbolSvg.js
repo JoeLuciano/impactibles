@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { svg_pixel_size } from 'components/svgPage/Config';
 
 const svgVariant = {
-  hidden: {},
-  visible: { transition: { delayChildren: 0.2 } },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 export const SymbolSvg = ({ children }) => {

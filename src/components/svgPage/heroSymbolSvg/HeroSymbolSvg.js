@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import { hover_duration, selection_duration } from 'components/svgPage/Config';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
-import Symbol_Index from 'components/symbols/Symbols.json';
-import { drawPath } from 'components/svgPage/Config';
+import { symbolSvgContext } from 'App';
 
 const svgContainer = {
   static: { scale: 1 },
@@ -22,25 +21,7 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
   const { symbol_id } = useParams();
   const [svgState, setSvgState] = useState('static');
   const controls = useAnimation();
-
-  const [heroSymbol, setHeroSymbol] = useState('NO SVG');
-  useEffect(() => {
-    const symbolName = Symbol_Index[symbolIndex].name;
-
-    import(`components/symbols/svgComponents/${symbolName}`).then(
-      ({ index, name, description, Symbol }) => {
-        setHeroSymbol(
-          <Symbol
-            index={index}
-            name={name}
-            description={description}
-            variant={drawPath}
-          />
-        );
-      }
-    );
-  }, [symbolIndex]);
-
+  const { symbolSvgJson } = useContext(symbolSvgContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -82,7 +63,7 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
       }}>
       <SymbolSvg>
         <HoverSquare controls={controls} />
-        {heroSymbol}
+        {symbolSvgJson[symbolIndex]}
       </SymbolSvg>
     </motion.div>
   );

@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
 import Symbol_Index from 'components/symbols/Symbols.json';
-import { drawPath } from 'components/svgPage/Config';
-import { SymbolSvg } from './../symbolSvg/SymbolSvg';
+import { symbolSvgContext } from 'App';
+import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 
 const containerVariant = {
   hidden: { opacity: 0, zIndex: -1 },
@@ -21,7 +21,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
   const controls = useAnimation();
   useEffect(() => {
     if (symbol_id || isSymbolPage) {
-      controls.set('visible');
+      controls.start('visible');
     } else {
       controls.start('hidden');
     }
@@ -29,28 +29,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
 
   const navigate = useNavigate();
 
-  const [summarySymbol, setSummarySymbol] = useState('NO SVG');
-  useEffect(() => {
-    if (symbol_id) {
-      // Set this as a global state that you can pull from rather than re-import which is VERY SLOW!!!!
-      const symbolName = Symbol_Index[symbol_id].name;
-
-      import(`components/symbols/svgComponents/${symbolName}`).then(
-        ({ index, name, description, Symbol }) => {
-          setSummarySymbol(
-            <SymbolSvg>
-              <Symbol
-                index={index}
-                name={name}
-                description={description}
-                variant={drawPath}
-              />
-            </SymbolSvg>
-          );
-        }
-      );
-    }
-  }, [symbol_id]);
+  const { symbolSvgJson } = useContext(symbolSvgContext);
 
   return (
     <motion.div
@@ -68,7 +47,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
         {...(!isSymbolPage && {
           onClick: () => navigate(`/symbol/${symbol_id}`),
         })}>
-        {summarySymbol}
+        <SymbolSvg>{symbolSvgJson[symbol_id]}</SymbolSvg>
       </motion.div>
       <motion.h1
         layoutId='SymbolPageName'
