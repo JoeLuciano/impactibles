@@ -1,6 +1,20 @@
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M60 19V57.5858C60 58.4767 61.0771 58.9229 61.7071 58.2929L88.9914 31.0086L61.7071 58.2929C61.0771 58.9229 61.5233 60 62.4142 60H101H62.4142C61.5233 60 61.0771 61.0771 61.7071 61.7071L88.9914 88.9914L61.7071 61.7071C61.0771 61.0771 60 61.5233 60 62.4142V101V62.4142C60 61.5233 58.9229 61.0771 58.2929 61.7071L31.0086 88.9914L58.2929 61.7071C58.9229 61.0771 58.4767 60 57.5858 60H19H57.5858C58.4767 60 58.9229 58.9229 58.2929 58.2929L31.0086 31.0086L58.2929 58.2929C58.9229 58.9229 60 58.4767 60 57.5858V19Z" fill="#C4C4C4" stroke="#02DFEE" stroke-width="3"/>
-<path d="M57 57.5V62.5C57 62.7761 57.2239 63 57.5 63H62.5C62.7761 63 63 62.7761 63 62.5V57.5C63 57.2239 62.7761 57 62.5 57H57.5C57.2239 57 57 57.2239 57 57.5Z" stroke="#02DFEE" stroke-width="7"/>
-<circle cx="60" cy="60" r="50" stroke="#02DFEE" stroke-width="20" stroke-dasharray="4 30"/>
-<circle cx="60" cy="60" r="41.5" stroke="#02DFEE" stroke-width="3"/>
+<svg width="119" height="119" viewBox="0 0 119 119" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 60C19 82.6437 37.3563 101 60 101C82.6437 101 101 82.6437 101 60C101 37.3563 82.6437 19 60 19C37.3563 19 19 37.3563 19 60Z" stroke="#02DFEE" stroke-width="2" stroke-linecap="square"/>
+<path d="M63 57H57V63H63V57Z" stroke="#02DFEE" stroke-width="8" stroke-linecap="square"/>
+<path d="M9 59H2V61H9V59Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M117 59H110V61H117V59Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M61 117L61 110L59 110L59 117L61 117Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M61 9L61 2L59 2L59 9L61 9Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M24.1447 23.4375L19.1949 18.4878L17.7807 19.902L22.7305 24.8518L24.1447 23.4375Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M101.512 99.8051L96.5624 94.8553L95.1482 96.2696L100.098 101.219L101.512 99.8051Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M19.902 101.219L24.8517 96.2695L23.4375 94.8553L18.4878 99.8051L19.902 101.219Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<path d="M97.2696 24.8518L102.219 19.902L100.805 18.4878L95.8553 23.4376L97.2696 24.8518Z" stroke="#02DFEE" stroke-width="3" stroke-linecap="square"/>
+<line x1="60" y1="66" x2="60" y2="109" stroke="#02DFEE" stroke-width="2"/>
+<line x1="54" y1="60" x2="10" y2="60" stroke="#02DFEE" stroke-width="2"/>
+<line x1="109" y1="60" x2="66" y2="60" stroke="#02DFEE" stroke-width="2"/>
+<line x1="60" y1="10" x2="60" y2="54" stroke="#02DFEE" stroke-width="2"/>
+<line x1="64.7426" y1="64.0355" x2="95.1482" y2="94.4411" stroke="#02DFEE" stroke-width="2"/>
+<line x1="55.2573" y1="64.0355" x2="24.1446" y2="95.1482" stroke="#02DFEE" stroke-width="2"/>
+<line x1="95.7427" y1="24.5502" x2="64.7427" y2="55.5502" stroke="#02DFEE" stroke-width="2"/>
+<line x1="24.2573" y1="24.5503" x2="55.2573" y2="55.5503" stroke="#02DFEE" stroke-width="2"/>
 </svg>

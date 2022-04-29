@@ -30,7 +30,7 @@ export const SvgPage = () => {
       variants={svgPage}
       initial='hidden'
       animate='visible'>
-      {showSymbol && heroSymbolSvgs.length === 49 && heroSymbolSvgs}
+      {showSymbol && heroSymbolSvgs.length === 50 && heroSymbolSvgs}
       <SymbolSummary />
     </motion.div>
   );
