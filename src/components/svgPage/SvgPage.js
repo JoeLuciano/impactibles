@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { SymbolSummary } from 'components/symbolSummary/SymbolSummary';
 import styles from './SvgPage.module.css';
 import { symbolSvgContext } from 'App';
+import { milliseconds_until_svg_context_propogates } from 'config/Config';
 
 const svgPage = {
   hidden: {},
@@ -18,11 +19,13 @@ export const SvgPage = () => {
   const [showSymbol, setShowSymbol] = useState(Boolean(symbol_id));
   useEffect(() => {
     async function delayShow() {
-      await new Promise((res) => setTimeout(res, 200));
+      await new Promise((res) =>
+        setTimeout(res, milliseconds_until_svg_context_propogates * 4)
+      );
       setShowSymbol(true);
     }
     delayShow();
-  });
+  }, []);
 
   return (
     <motion.div

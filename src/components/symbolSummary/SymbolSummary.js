@@ -1,10 +1,11 @@
-import { useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
 import Symbol_Index from 'components/symbols/Symbols.json';
 import { symbolSvgContext } from 'App';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
+import { milliseconds_until_svg_context_propogates } from 'config/Config';
 
 const containerVariant = {
   hidden: { opacity: 0, zIndex: -1 },
@@ -29,7 +30,18 @@ export const SymbolSummary = ({ isSymbolPage }) => {
 
   const navigate = useNavigate();
 
+  const [symbolSvg, setSymbolSvg] = useState();
   const { symbolSvgJson } = useContext(symbolSvgContext);
+
+  useEffect(() => {
+    async function delayGettingSvg() {
+      await new Promise((res) =>
+        setTimeout(res, milliseconds_until_svg_context_propogates)
+      );
+      setSymbolSvg(symbolSvgJson[symbol_id]);
+    }
+    delayGettingSvg();
+  }, [symbolSvgJson, symbol_id]);
 
   return (
     <motion.div
@@ -47,7 +59,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
         {...(!isSymbolPage && {
           onClick: () => navigate(`/symbol/${symbol_id}`),
         })}>
-        <SymbolSvg>{symbolSvgJson[symbol_id]}</SymbolSvg>
+        <SymbolSvg>{symbolSvg}</SymbolSvg>
       </motion.div>
       <motion.h1
         layoutId='SymbolPageName'

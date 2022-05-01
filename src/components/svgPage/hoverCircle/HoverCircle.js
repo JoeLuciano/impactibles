@@ -4,7 +4,7 @@ import {
   stroke_width,
   hover_duration,
   selection_duration,
-} from './../Config';
+} from '../../../config/Config';
 
 const hoverSelection = {
   static: {

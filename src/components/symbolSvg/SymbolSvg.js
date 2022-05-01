@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { svg_pixel_size } from 'components/svgPage/Config';
+import { svg_pixel_size } from 'config/Config';
 
 const svgVariant = {
   hidden: { opacity: 0 },

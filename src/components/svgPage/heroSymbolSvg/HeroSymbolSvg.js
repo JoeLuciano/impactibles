@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
-import { hover_duration, selection_duration } from 'components/svgPage/Config';
+import { hover_duration, selection_duration } from 'config/Config';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 import { symbolSvgContext } from 'App';
 
