@@ -21,16 +21,6 @@
     padding: 1rem;
 }
 
-.summarySvgContainer {
-    width: 10rem;
-    height: 10rem;
-}
-
-.pageSvgContainer {
-    width: 20rem;
-    height: 20rem;
-}
-
 .summarySymbolName {
     font-size: 2rem;
 }

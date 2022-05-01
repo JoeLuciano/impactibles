@@ -1,18 +1,12 @@
-import { useState, useEffect, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
 import Symbol_Index from 'components/symbols/Symbols.json';
-import { symbolSvgContext } from 'App';
-import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
-import { milliseconds_until_svg_context_propogates } from 'config/Config';
+import { SvgContainer } from 'components/symbolSummary/svgContainer/SvgContainer';
+import { PurchaseKeyWithSymbol } from 'components/symbolSummary/buttons/openseaLinks/purchaseKeyWithSymbol/PurchaseKeyWithSymbol';
 
 const containerVariant = {
-  hidden: { opacity: 0, zIndex: -1 },
-  visible: { opacity: 1, zIndex: 3 },
-};
-
-const svgContainerVariant = {
   hidden: { opacity: 0, zIndex: -1 },
   visible: { opacity: 1, zIndex: 3 },
 };
@@ -28,48 +22,29 @@ export const SymbolSummary = ({ isSymbolPage }) => {
     }
   }, [symbol_id, controls, isSymbolPage]);
 
-  const navigate = useNavigate();
-
-  const [symbolSvg, setSymbolSvg] = useState();
-  const { symbolSvgJson } = useContext(symbolSvgContext);
-
+  const [symbolName, setSymbolName] = useState();
   useEffect(() => {
-    async function delayGettingSvg() {
-      await new Promise((res) =>
-        setTimeout(res, milliseconds_until_svg_context_propogates)
-      );
-      setSymbolSvg(symbolSvgJson[symbol_id]);
+    if (symbol_id) {
+      setSymbolName(Symbol_Index[symbol_id].name.split('_').join(' '));
     }
-    delayGettingSvg();
-  }, [symbolSvgJson, symbol_id]);
+  }, [symbol_id]);
 
   return (
     <motion.div
-      layoutId='SymbolPage'
+      layoutId='SymbolContainer'
       className={isSymbolPage ? styles.pageContainer : styles.summaryContainer}
       variants={containerVariant}
       animate={controls}>
-      <motion.div
-        layoutId='SymbolPageSvg'
-        className={
-          isSymbolPage ? styles.pageSvgContainer : styles.summarySvgContainer
-        }
-        variants={svgContainerVariant}
-        animate={controls}
-        {...(!isSymbolPage && {
-          onClick: () => navigate(`/symbol/${symbol_id}`),
-        })}>
-        <SymbolSvg>{symbolSvg}</SymbolSvg>
-      </motion.div>
+      <SvgContainer controls={controls} isSymbolPage={isSymbolPage} />
       <motion.h1
-        layoutId='SymbolPageName'
+        layoutId='SymbolName'
         className={
           isSymbolPage ? styles.pageSymbolName : styles.summarySymbolName
         }>
-        {symbol_id && Symbol_Index[symbol_id].name.split('_').join(' ')}
+        {symbol_id && symbolName}
       </motion.h1>
       <motion.h3
-        layoutId='SymbolPageDescription'
+        layoutId='SymbolDescription'
         className={
           isSymbolPage
             ? styles.pageSymbolDescription
@@ -77,6 +52,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
         }>
         {symbol_id && Symbol_Index[symbol_id].description}
       </motion.h3>
+      <PurchaseKeyWithSymbol symbolName={symbolName} isBig={isSymbolPage} />
     </motion.div>
   );
 };

@@ -15,7 +15,6 @@ export const SvgPage = () => {
   const { symbol_id } = useParams();
   const { heroSymbolSvgs } = useContext(symbolSvgContext);
 
-  // TODO: Figure out how to prevent hidden symbols when refreshing page after selecting a symbol
   const [showSymbol, setShowSymbol] = useState(Boolean(symbol_id));
   useEffect(() => {
     async function delayShow() {
@@ -33,7 +32,7 @@ export const SvgPage = () => {
       variants={svgPage}
       initial='hidden'
       animate='visible'>
-      {showSymbol && heroSymbolSvgs.length === 50 && heroSymbolSvgs}
+      {showSymbol && heroSymbolSvgs}
       <SymbolSummary />
     </motion.div>
   );
