@@ -39,3 +39,22 @@ export const symbol_order = [
   ...['80', '81', '82', '83', '84'],
   ...['90', '91', '92', '93', '94'],
 ];
+
+export const getSummaryPosition = (index) => {
+  const row = parseInt(index[0]);
+  const col = parseInt(index[1]);
+  let summaryPosition = {};
+  if (col < 3) {
+    summaryPosition['x'] = 1;
+  } else {
+    summaryPosition['x'] = -1;
+  }
+
+  if (row < 4) {
+    summaryPosition['y'] = 1;
+  } else {
+    summaryPosition['y'] = -1;
+  }
+
+  return summaryPosition;
+};

@@ -6,8 +6,10 @@ import { drawPath, symbol_order } from 'config/Config';
 import { HeroSymbolSvg } from 'components/svgPage/heroSymbolSvg/HeroSymbolSvg';
 
 export const symbolSvgContext = createContext();
+export const symbolSelectionContext = createContext();
 
 function App() {
+  const [hasSymbolBeenTapped, setHasSymbolBeenTapped] = useState(false);
   const [symbolSvgJson, setSymbolSvgJson] = useState({});
   const [heroSymbolSvgs, setHeroSymbolSvgs] = useState([]);
 
@@ -42,12 +44,23 @@ function App() {
     });
   }, []);
 
+  const getHasSymbolBeenTapped = () => {
+    if (hasSymbolBeenTapped) {
+      setHasSymbolBeenTapped(false);
+      return true;
+    }
+    return false;
+  };
+
   return (
-    <symbolSvgContext.Provider value={{ symbolSvgJson, heroSymbolSvgs }}>
-      <div className='app'>
-        <PageRoutes />
-      </div>
-    </symbolSvgContext.Provider>
+    <symbolSelectionContext.Provider
+      value={{ getHasSymbolBeenTapped, setHasSymbolBeenTapped }}>
+      <symbolSvgContext.Provider value={{ symbolSvgJson, heroSymbolSvgs }}>
+        <div className='app'>
+          <PageRoutes />
+        </div>
+      </symbolSvgContext.Provider>
+    </symbolSelectionContext.Provider>
   );
 }
 

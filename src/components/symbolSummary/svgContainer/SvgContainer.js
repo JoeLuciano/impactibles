@@ -5,17 +5,14 @@ import styles from './SvgContainer.module.css';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 import { symbolSvgContext } from 'App';
 import { milliseconds_until_svg_context_propogates } from 'config/Config';
+import { summaryContext } from './../SymbolSummary';
 
-const containerVariant = {
-  hidden: { opacity: 0, zIndex: -1 },
-  visible: { opacity: 1, zIndex: 3 },
-};
-
-export const SvgContainer = ({ controls, isSymbolPage }) => {
+export const SvgContainer = () => {
   const navigate = useNavigate();
   const { symbol_id } = useParams();
   const [symbolSvg, setSymbolSvg] = useState();
   const { symbolSvgJson } = useContext(symbolSvgContext);
+  const { isSymbolPage } = useContext(summaryContext);
 
   useEffect(() => {
     async function delayGettingSvg() {
@@ -33,8 +30,6 @@ export const SvgContainer = ({ controls, isSymbolPage }) => {
       className={
         isSymbolPage ? styles.pageSvgContainer : styles.summarySvgContainer
       }
-      variants={containerVariant}
-      animate={controls}
       {...(!isSymbolPage && {
         onClick: () => navigate(`/symbol/${symbol_id}`),
       })}>

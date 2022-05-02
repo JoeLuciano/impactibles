@@ -5,7 +5,7 @@ import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import { hover_duration, selection_duration } from 'config/Config';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
-import { symbolSvgContext } from 'App';
+import { symbolSvgContext, symbolSelectionContext } from 'App';
 
 const svgContainer = {
   static: { scale: 1 },
@@ -22,6 +22,7 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
   const [svgState, setSvgState] = useState('static');
   const controls = useAnimation();
   const { symbolSvgJson } = useContext(symbolSvgContext);
+  const { setHasSymbolBeenTapped } = useContext(symbolSelectionContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -57,6 +58,7 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
           setSvgState('static');
           navigate('/');
         } else if (!symbol_id) {
+          setHasSymbolBeenTapped(true);
           setSvgState('selected');
           navigate(`/${symbolIndex}`);
         }

@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { summaryContext } from './../../../SymbolSummary';
 import { motion } from 'framer-motion';
 import styles from './PurchaseKeyWithSymbol.module.css';
 
@@ -39,7 +41,8 @@ const buttonVariant = {
 };
 
 // https://docs.opensea.io/docs/logos
-export const PurchaseKeyWithSymbol = ({ symbolName, isBig }) => {
+export const PurchaseKeyWithSymbol = () => {
+  const { isSymbolPage, symbolName } = useContext(summaryContext);
   // TODO: Need to get more accurate search
   const itfkUrl = 'https://opensea.io/collection/impact-theory-founders-key';
   const openseaUrl = `${itfkUrl}?search[stringTraits][0][name]=Symbol%20%231&search[stringTraits][0][values][0]=B1%3A%20${symbolName}`;
@@ -52,7 +55,7 @@ export const PurchaseKeyWithSymbol = ({ symbolName, isBig }) => {
       variants={buttonVariant}
       initial='hidden'
       animate='visible'>
-      <OpenseaSvg isBig={isBig} />
+      <OpenseaSvg isBig={isSymbolPage} />
     </motion.a>
   );
 };
