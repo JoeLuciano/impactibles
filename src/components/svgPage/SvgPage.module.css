@@ -1,9 +1,13 @@
 .svgPageContainer {
+
+}
+
+.svgPage {
     position: relative;
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 10rem 10rem 10rem 10rem 10rem;
+    grid-template-columns: repeat(5, min(18%, 9vh));
     justify-content: center;
     align-items: center;
 }

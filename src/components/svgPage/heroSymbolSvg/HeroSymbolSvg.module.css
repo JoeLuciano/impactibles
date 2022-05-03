@@ -1,6 +1,6 @@
 .svgContainer {
-    width: 5rem;
-    height: 5rem;
+    width: inherit;
+    height: inherit;
     position: relative;
     display:flex;
     align-items: center;

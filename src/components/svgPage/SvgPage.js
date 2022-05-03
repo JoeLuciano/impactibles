@@ -27,13 +27,15 @@ export const SvgPage = () => {
   }, []);
 
   return (
-    <motion.div
-      className={styles.svgPageContainer}
-      variants={svgPage}
-      initial='hidden'
-      animate='visible'>
-      {showSymbol && heroSymbolSvgs}
-      <SymbolSummary />
+    <motion.div className={styles.svgPageContainer}>
+      <motion.div
+        className={styles.svgPage}
+        variants={svgPage}
+        initial='hidden'
+        animate='visible'>
+        {showSymbol && heroSymbolSvgs}
+        <SymbolSummary />
+      </motion.div>
     </motion.div>
   );
 };
