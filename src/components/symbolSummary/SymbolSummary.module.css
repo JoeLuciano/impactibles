@@ -19,3 +19,7 @@
     justify-content: left;
     padding: 1rem;
 }
+
+.backButton {
+    width: 5rem;
+}

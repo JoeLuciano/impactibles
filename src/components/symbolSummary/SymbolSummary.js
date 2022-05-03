@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import styles from './SymbolSummary.module.css';
 import Symbol_Index from 'components/symbols/Symbols.json';
@@ -16,6 +16,8 @@ export const SymbolSummary = ({ isSymbolPage }) => {
   const { symbol_id } = useParams();
   const controls = useAnimation();
   const { getHasSymbolBeenTapped } = useContext(symbolSelectionContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (symbol_id) {
@@ -59,6 +61,25 @@ export const SymbolSummary = ({ isSymbolPage }) => {
           }
           variants={containerVariant}
           animate={controls}>
+          {isSymbolPage ? (
+            <motion.button
+              layoutId='SymbolButton'
+              className={styles.backButton}
+              onClick={() => {
+                navigate(`/${symbol_id}`);
+              }}>
+              BACK
+            </motion.button>
+          ) : (
+            <motion.button
+              layoutId='SymbolButton'
+              className={styles.backButton}
+              onClick={() => {
+                navigate(`/symbol/${symbol_id}`);
+              }}>
+              EXPAND
+            </motion.button>
+          )}
           <SvgContainer />
           <SymbolNameContainer />
           <SymbolDescriptionContainer />
