@@ -19,7 +19,7 @@ export const SvgPage = () => {
   useEffect(() => {
     async function delayShow() {
       await new Promise((res) =>
-        setTimeout(res, milliseconds_until_svg_context_propogates * 4)
+        setTimeout(res, milliseconds_until_svg_context_propogates * 10)
       );
       setShowSymbol(true);
     }
@@ -34,7 +34,7 @@ export const SvgPage = () => {
         initial='hidden'
         animate='visible'>
         {showSymbol && heroSymbolSvgs}
-        <SymbolSummary />
+        {/* <SymbolSummary /> */}
       </motion.div>
     </motion.div>
   );

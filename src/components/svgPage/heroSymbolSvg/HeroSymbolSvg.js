@@ -1,19 +1,50 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
-import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
+import { SymbolSvgSummary } from 'components/svgPage/symbolSvgSummary/SymbolSvgSummary';
 import { hover_duration, selection_duration } from 'config/Config';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 import { symbolSvgContext, symbolSelectionContext } from 'App';
 
 const svgContainer = {
-  static: { scale: 1 },
-  focus: { zIndex: 1, scale: 1.2, transition: { duration: hover_duration } },
+  static: {
+    x: 0,
+    y: 0,
+    zIndex: 0,
+    scale: 1,
+    backgroundColor: 'var(--transparent)',
+  },
+  focus: {
+    x: 0,
+    y: 0,
+    zIndex: 1,
+    scale: 1.2,
+    backgroundColor: 'var(--light-background)',
+    transition: { duration: hover_duration },
+  },
   selected: {
-    zIndex: 2,
+    x: '50%',
+    y: '50%',
+    zIndex: 5,
     scale: 1.5,
     transition: { duration: selection_duration },
+  },
+};
+
+const symbolSvgContainerVariant = {
+  static: {
+    x: 0,
+    y: 0,
+  },
+  focus: {
+    x: 0,
+    y: 0,
+  },
+  selected: {
+    x: '10%',
+    y: '10%',
+    transition: { duration: 0.5 },
   },
 };
 
@@ -63,10 +94,25 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
           navigate(`/${symbolIndex}`);
         }
       }}>
-      <SymbolSvg>
-        <HoverSquare controls={controls} />
-        {symbolSvgJson[symbolIndex]}
-      </SymbolSvg>
+      <AnimatePresence>
+        {svgState === 'selected' ? (
+          <SymbolSvgSummary>
+            <motion.div
+              layoutId={`SymbolSvg${symbolIndex}`}
+              className={styles.symbolSvgContainer}
+              variants={symbolSvgContainerVariant}>
+              <SymbolSvg>{symbolSvgJson[symbolIndex]}</SymbolSvg>
+            </motion.div>
+          </SymbolSvgSummary>
+        ) : (
+          <motion.div
+            layoutId={`SymbolSvg${symbolIndex}`}
+            className={styles.symbolSvgContainer}
+            variants={symbolSvgContainerVariant}>
+            <SymbolSvg>{symbolSvgJson[symbolIndex]}</SymbolSvg>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
