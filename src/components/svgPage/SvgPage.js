@@ -34,7 +34,6 @@ export const SvgPage = () => {
         initial='hidden'
         animate='visible'>
         {showSymbol && heroSymbolSvgs}
-        <SymbolSummary />
       </motion.div>
     </motion.div>
   );

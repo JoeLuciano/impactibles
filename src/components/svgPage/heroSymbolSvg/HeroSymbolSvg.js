@@ -6,14 +6,21 @@ import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import { hover_duration, selection_duration } from 'config/Config';
 import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 import { symbolSvgContext, symbolSelectionContext } from 'App';
+import { SymbolSummary } from 'components/symbolSummary/SymbolSummary';
 
-const svgContainer = {
-  static: { scale: 1 },
-  focus: { zIndex: 1, scale: 1.2, transition: { duration: hover_duration } },
+const symbolContainer = {
+  static: { scale: 1, backgroundColor: '' },
+  focus: {
+    zIndex: 1,
+    scale: 1.2,
+    transition: { duration: hover_duration },
+    backgroundColor: 'var(--summary-background)',
+  },
   selected: {
     zIndex: 2,
     scale: 1.5,
     transition: { duration: selection_duration },
+    backgroundColor: '',
   },
 };
 
@@ -37,10 +44,11 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
     }
   }, [symbol_id, symbolIndex, controls, svgState]);
 
+  console.log(svgState);
   return (
     <motion.div
-      className={styles.svgContainer}
-      variants={svgContainer}
+      className={styles.symbolContainer}
+      variants={symbolContainer}
       initial='static'
       animate={controls}
       onHoverStart={() => {
@@ -52,21 +60,28 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
         if (svgState === 'focus') {
           setSvgState('static');
         }
-      }}
-      onTap={() => {
-        if (symbol_id === symbolIndex && svgState === 'selected') {
-          setSvgState('static');
-          navigate('/');
-        } else if (!symbol_id) {
-          setHasSymbolBeenTapped(true);
-          setSvgState('selected');
-          navigate(`/${symbolIndex}`);
-        }
       }}>
-      <SymbolSvg>
-        <HoverSquare controls={controls} />
-        {symbolSvgJson[symbolIndex]}
-      </SymbolSvg>
+      {symbol_id !== symbolIndex ? (
+        <motion.div
+          className={styles.svgContainer}
+          onTap={() => {
+            if (symbol_id === symbolIndex && svgState === 'selected') {
+              setSvgState('static');
+              navigate('/');
+            } else if (!symbol_id) {
+              setHasSymbolBeenTapped(true);
+              setSvgState('selected');
+              navigate(`/${symbolIndex}`);
+            }
+          }}>
+          <SymbolSvg>
+            {/* <HoverSquare controls={controls} /> */}
+            {symbolSvgJson[symbolIndex]}
+          </SymbolSvg>
+        </motion.div>
+      ) : (
+        <SymbolSummary />
+      )}
     </motion.div>
   );
 };

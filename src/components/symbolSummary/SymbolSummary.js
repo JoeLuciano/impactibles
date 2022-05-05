@@ -44,8 +44,6 @@ export const SymbolSummary = ({ isSymbolPage }) => {
     const containerVariant = {
       hidden: { x: 0, y: 0, opacity: 0, zIndex: -1 },
       visible: {
-        x: !isSymbolPage * summaryPosition['x'] * 200,
-        y: !isSymbolPage * summaryPosition['y'] * 200,
         opacity: 1,
         zIndex: 3,
         transition: { duration: 1 },
@@ -71,14 +69,23 @@ export const SymbolSummary = ({ isSymbolPage }) => {
               BACK
             </motion.button>
           ) : (
-            <motion.button
-              layoutId='SymbolButton'
-              className={styles.backButton}
-              onClick={() => {
-                navigate(`/symbol/${symbol_id}`);
-              }}>
-              EXPAND
-            </motion.button>
+            <>
+              <motion.button
+                layoutId='SymbolButton'
+                className={styles.backButton}
+                onClick={() => {
+                  navigate(`/symbol/${symbol_id}`);
+                }}>
+                EXPAND
+              </motion.button>
+              <motion.button
+                className={styles.backButton}
+                onClick={() => {
+                  navigate('/');
+                }}>
+                MINIMIZE
+              </motion.button>
+            </>
           )}
           <SvgContainer />
           <SymbolNameContainer />

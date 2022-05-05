@@ -1,3 +1,14 @@
+.symbolContainer {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
 .svgContainer {
     width: inherit;
     height: inherit;
