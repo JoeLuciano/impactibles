@@ -1,25 +1,29 @@
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { svg_pixel_size } from 'config/Config';
+import styles from './SymbolSvg.module.css';
 
 const svgVariant = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
 
-export const SymbolSvg = ({ children }) => {
+export const SymbolSvg = ({ children, index, viewSize }) => {
   const { symbol_id } = useParams();
-
   return (
-    <motion.svg
-      viewBox={`0 0 ${svg_pixel_size} ${svg_pixel_size}`}
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      variants={svgVariant}
-      style={{ height: 'inherit', width: 'inherit' }}
-      initial={symbol_id ? 'visible' : 'hidden'}
-      animate={'visible'}>
-      {children}
-    </motion.svg>
+    <motion.div
+      layoutId={`${index}_SvgContainer`}
+      className={styles.svgContainer}>
+      <motion.svg
+        layoutId={`SymbolSvg${index}`}
+        viewBox={`0 0 ${viewSize} ${viewSize}`}
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        variants={svgVariant}
+        style={{ height: 'inherit', width: 'inherit' }}
+        initial={symbol_id ? 'visible' : 'hidden'}
+        animate={'visible'}>
+        {children}
+      </motion.svg>
+    </motion.div>
   );
 };

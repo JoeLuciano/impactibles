@@ -12,7 +12,7 @@ import { symbolSelectionContext } from 'App';
 
 export const summaryContext = createContext();
 
-export const SymbolSummary = ({ isSymbolPage }) => {
+export const SymbolSummary = ({ children, isSymbolPage }) => {
   const { symbol_id } = useParams();
   const controls = useAnimation();
   const { getHasSymbolBeenTapped } = useContext(symbolSelectionContext);
@@ -38,13 +38,11 @@ export const SymbolSummary = ({ isSymbolPage }) => {
   }, [symbol_id]);
 
   if (symbol_id) {
-    // TODO: Get the heroSymbolSvgGrid size and use index to find origin
     const summaryPosition = getSummaryPosition(symbol_id);
 
     const containerVariant = {
-      hidden: { x: 0, y: 0, opacity: 0, zIndex: -1 },
+      hidden: { x: 0, y: 0, zIndex: -1 },
       visible: {
-        opacity: 1,
         zIndex: 3,
         transition: { duration: 1 },
       },
@@ -87,7 +85,7 @@ export const SymbolSummary = ({ isSymbolPage }) => {
               </motion.button>
             </>
           )}
-          <SvgContainer />
+          <SvgContainer>{children}</SvgContainer>
           <SymbolNameContainer />
           <SymbolDescriptionContainer />
           <PurchaseKeyWithSymbol />

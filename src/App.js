@@ -4,6 +4,7 @@ import { PageRoutes } from 'components/pageRoutes/PageRoutes';
 import Symbol_Index from 'components/symbols/Symbols.json';
 import { drawPath, symbol_order } from 'config/Config';
 import { HeroSymbolSvg } from 'components/svgPage/heroSymbolSvg/HeroSymbolSvg';
+import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 
 export const symbolSvgContext = createContext();
 export const symbolSelectionContext = createContext();
@@ -28,14 +29,11 @@ function App() {
         const symbolName = Symbol_Index[symbol_id].name;
 
         import(`components/symbols/svgComponents/${symbolName}`).then(
-          ({ index, name, description, Symbol }) => {
-            allSymbolSvgs[index] = (
-              <Symbol
-                index={index}
-                name={name}
-                description={description}
-                variant={drawPath(index)}
-              />
+          ({ index, Symbol }) => {
+            allSymbolSvgs[index] = (viewSize) => (
+              <SymbolSvg index={index} viewSize={viewSize}>
+                <Symbol variant={drawPath(index)} />
+              </SymbolSvg>
             );
           }
         );

@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { SymbolSummary } from 'components/symbolSummary/SymbolSummary';
 import styles from './SvgPage.module.css';
 import { symbolSvgContext } from 'App';
 import { milliseconds_until_svg_context_propogates } from 'config/Config';

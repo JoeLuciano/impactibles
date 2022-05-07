@@ -4,12 +4,12 @@ import { motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
 import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import { hover_duration, selection_duration } from 'config/Config';
-import { SymbolSvg } from 'components/symbolSvg/SymbolSvg';
 import { symbolSvgContext, symbolSelectionContext } from 'App';
 import { SymbolSummary } from 'components/symbolSummary/SymbolSummary';
+import { svg_pixel_size } from 'config/Config';
 
 const symbolContainer = {
-  static: { scale: 1, backgroundColor: '' },
+  static: { scale: 1, backgroundColor: 'var(--transparent)' },
   focus: {
     zIndex: 1,
     scale: 1.2,
@@ -20,7 +20,7 @@ const symbolContainer = {
     zIndex: 2,
     scale: 1.5,
     transition: { duration: selection_duration },
-    backgroundColor: '',
+    backgroundColor: 'var(--transparent)',
   },
 };
 
@@ -44,7 +44,6 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
     }
   }, [symbol_id, symbolIndex, controls, svgState]);
 
-  console.log(svgState);
   return (
     <motion.div
       className={styles.symbolContainer}
@@ -74,13 +73,15 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
               navigate(`/${symbolIndex}`);
             }
           }}>
-          <SymbolSvg>
-            {/* <HoverSquare controls={controls} /> */}
-            {symbolSvgJson[symbolIndex]}
-          </SymbolSvg>
+          {/* <HoverSquare controls={controls} /> */}
+          {symbolSvgJson[symbolIndex] &&
+            symbolSvgJson[symbolIndex](svg_pixel_size)}
         </motion.div>
       ) : (
-        <SymbolSummary />
+        <SymbolSummary>
+          {symbolSvgJson[symbolIndex] &&
+            symbolSvgJson[symbolIndex](svg_pixel_size)}
+        </SymbolSummary>
       )}
     </motion.div>
   );

@@ -2,9 +2,11 @@
 .summarySvgContainer {
     width: 10rem;
     height: 10rem;
+    opacity: 1;
 }
 
 .pageSvgContainer {
     width: 20rem;
     height: 20rem;
+    opacity: 1;
 }
