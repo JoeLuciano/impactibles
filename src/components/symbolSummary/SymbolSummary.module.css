@@ -4,7 +4,6 @@
     right: 40%;
     width: 15rem;
     background-color: var(--summary-background);
-    z-index: 5;
     padding: 1rem;
 }
 

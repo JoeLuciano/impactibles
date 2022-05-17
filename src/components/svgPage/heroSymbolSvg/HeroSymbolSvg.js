@@ -1,15 +1,14 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { motion, useAnimation } from 'framer-motion';
+import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import styles from './HeroSymbolSvg.module.css';
-import { HoverSquare } from 'components/svgPage/hoverCircle/HoverCircle';
 import { hover_duration, selection_duration } from 'config/Config';
 import { symbolSvgContext, symbolSelectionContext } from 'App';
 import { SymbolSummary } from 'components/symbolSummary/SymbolSummary';
 import { svg_pixel_size } from 'config/Config';
 
 const symbolContainer = {
-  static: { scale: 1, backgroundColor: 'var(--transparent)' },
+  static: { zIndex: 1, scale: 1, backgroundColor: 'var(--transparent)' },
   focus: {
     zIndex: 1,
     scale: 1.2,
@@ -44,6 +43,9 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
     }
   }, [symbol_id, symbolIndex, controls, svgState]);
 
+  const { innerWidth: width } = window;
+  const isMobile = width < 540;
+
   return (
     <motion.div
       className={styles.symbolContainer}
@@ -60,29 +62,32 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
           setSvgState('static');
         }
       }}>
-      {symbol_id !== symbolIndex ? (
-        <motion.div
-          className={styles.svgContainer}
-          onTap={() => {
-            if (symbol_id === symbolIndex && svgState === 'selected') {
-              setSvgState('static');
-              navigate('/');
-            } else if (!symbol_id) {
-              setHasSymbolBeenTapped(true);
-              setSvgState('selected');
-              navigate(`/${symbolIndex}`);
-            }
-          }}>
-          {/* <HoverSquare controls={controls} /> */}
-          {symbolSvgJson[symbolIndex] &&
-            symbolSvgJson[symbolIndex](svg_pixel_size)}
-        </motion.div>
-      ) : (
-        <SymbolSummary>
-          {symbolSvgJson[symbolIndex] &&
-            symbolSvgJson[symbolIndex](svg_pixel_size)}
-        </SymbolSummary>
-      )}
+      <AnimatePresence>
+        {symbol_id !== symbolIndex ? (
+          <motion.div
+            className={styles.svgContainer}
+            onTap={() => {
+              if (symbol_id === symbolIndex && svgState === 'selected') {
+                setSvgState('static');
+                navigate('/');
+              } else if (!symbol_id && !isMobile) {
+                setHasSymbolBeenTapped(true);
+                setSvgState('selected');
+                navigate(`/${symbolIndex}`);
+              } else if (!symbol_id && isMobile) {
+                navigate(`/symbol/${symbolIndex}`);
+              }
+            }}>
+            {Boolean(symbolSvgJson[symbolIndex]) &&
+              symbolSvgJson[symbolIndex](svg_pixel_size)}
+          </motion.div>
+        ) : (
+          <SymbolSummary>
+            {Boolean(symbolSvgJson[symbolIndex]) &&
+              symbolSvgJson[symbolIndex](svg_pixel_size)}
+          </SymbolSummary>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

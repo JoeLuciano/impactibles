@@ -48,10 +48,12 @@ export const SymbolSummary = ({ children, isSymbolPage }) => {
       },
     };
 
+    const { innerWidth: width } = window;
+    const isMobile = width < 540;
+
     return (
       <summaryContext.Provider value={{ isSymbolPage, symbol_id, symbolName }}>
         <motion.div
-          layoutId='SymbolContainer'
           className={
             isSymbolPage ? styles.pageContainer : styles.summaryContainer
           }
@@ -62,7 +64,11 @@ export const SymbolSummary = ({ children, isSymbolPage }) => {
               layoutId='SymbolButton'
               className={styles.backButton}
               onClick={() => {
-                navigate(`/${symbol_id}`);
+                if (isMobile) {
+                  navigate('/');
+                } else {
+                  navigate(`/${symbol_id}`);
+                }
               }}>
               BACK
             </motion.button>

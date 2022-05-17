@@ -11,16 +11,15 @@ export const SymbolSvg = ({ children, index, viewSize }) => {
   const { symbol_id } = useParams();
   return (
     <motion.div
-      layoutId={`${index}_SvgContainer`}
+      layoutId={`${index}_SymbolSvgContainer`}
       className={styles.svgContainer}>
       <motion.svg
-        layoutId={`SymbolSvg${index}`}
         viewBox={`0 0 ${viewSize} ${viewSize}`}
         fill='none'
         xmlns='http://www.w3.org/2000/svg'
         variants={svgVariant}
         style={{ height: 'inherit', width: 'inherit' }}
-        initial={symbol_id ? 'visible' : 'hidden'}
+        initial={true ? 'visible' : 'hidden'}
         animate={'visible'}>
         {children}
       </motion.svg>

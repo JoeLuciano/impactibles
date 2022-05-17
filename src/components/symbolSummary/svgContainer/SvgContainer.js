@@ -10,7 +10,6 @@ export const SvgContainer = ({ children }) => {
 
   return (
     <motion.div
-      layoutId={`${symbol_id}_SvgContainer`}
       className={
         isSymbolPage ? styles.pageSvgContainer : styles.summarySvgContainer
       }
