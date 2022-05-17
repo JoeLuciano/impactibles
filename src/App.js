@@ -52,7 +52,11 @@ function App() {
 
   return (
     <symbolSelectionContext.Provider
-      value={{ getHasSymbolBeenTapped, setHasSymbolBeenTapped }}>
+      value={{
+        hasSymbolBeenTapped,
+        getHasSymbolBeenTapped,
+        setHasSymbolBeenTapped,
+      }}>
       <symbolSvgContext.Provider value={{ symbolSvgJson, heroSymbolSvgs }}>
         <div className='app'>
           <PageRoutes />

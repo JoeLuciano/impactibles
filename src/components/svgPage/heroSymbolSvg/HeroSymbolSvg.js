@@ -28,20 +28,26 @@ export const HeroSymbolSvg = ({ symbolIndex }) => {
   const [svgState, setSvgState] = useState('static');
   const controls = useAnimation();
   const { symbolSvgJson } = useContext(symbolSvgContext);
-  const { setHasSymbolBeenTapped } = useContext(symbolSelectionContext);
+  const { hasSymbolBeenTapped, setHasSymbolBeenTapped } = useContext(
+    symbolSelectionContext
+  );
   const navigate = useNavigate();
 
   useEffect(() => {
     if (symbol_id && symbol_id === symbolIndex) {
-      setSvgState('selected');
-      controls.start('selected');
+      if (hasSymbolBeenTapped === false) {
+        controls.set('selected');
+      } else {
+        setSvgState('selected');
+        controls.start('selected');
+      }
     } else if (svgState === 'focus') {
       controls.start('focus');
     } else {
       setSvgState('static');
       controls.start('static');
     }
-  }, [symbol_id, symbolIndex, controls, svgState]);
+  }, [hasSymbolBeenTapped, symbol_id, symbolIndex, controls, svgState]);
 
   const { innerWidth: width } = window;
   const isMobile = width < 540;

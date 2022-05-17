@@ -20,11 +20,14 @@ export const SymbolSummary = ({ children, isSymbolPage }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const symbolTapped = getHasSymbolBeenTapped();
     if (symbol_id) {
-      if (getHasSymbolBeenTapped() === true) {
+      if (symbolTapped === true) {
         controls.set('hidden');
+        controls.start('visible');
+      } else {
+        controls.set('visible');
       }
-      controls.start('visible');
     } else {
       controls.start('hidden');
     }
@@ -38,11 +41,17 @@ export const SymbolSummary = ({ children, isSymbolPage }) => {
   }, [symbol_id]);
 
   if (symbol_id) {
-    const summaryPosition = getSummaryPosition(symbol_id);
+    const { x, y } = getSummaryPosition(symbol_id);
+    const pixel_count = 50;
+
+    const xPosition = isSymbolPage ? 0 : 1 - x;
+    const yPosition = isSymbolPage ? 0 : 5 - y;
 
     const containerVariant = {
       hidden: { x: 0, y: 0, zIndex: -1 },
       visible: {
+        x: xPosition * pixel_count,
+        y: yPosition * pixel_count,
         zIndex: 3,
         transition: { duration: 1 },
       },
@@ -54,6 +63,7 @@ export const SymbolSummary = ({ children, isSymbolPage }) => {
     return (
       <summaryContext.Provider value={{ isSymbolPage, symbol_id, symbolName }}>
         <motion.div
+          layoutId='summaryContainer'
           className={
             isSymbolPage ? styles.pageContainer : styles.summaryContainer
           }

@@ -44,17 +44,8 @@ export const getSummaryPosition = (index) => {
   const row = parseInt(index[0]);
   const col = parseInt(index[1]);
   let summaryPosition = {};
-  if (col < 3) {
-    summaryPosition['x'] = 1;
-  } else {
-    summaryPosition['x'] = -1;
-  }
-
-  if (row < 4) {
-    summaryPosition['y'] = 1;
-  } else {
-    summaryPosition['y'] = -1;
-  }
+  summaryPosition['x'] = col;
+  summaryPosition['y'] = row;
 
   return summaryPosition;
 };
